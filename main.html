@@ -1,0 +1,86 @@
+<html>
+  <head>
+  	<meta charset="utf-8">
+    <title>Your Awesome Webpage created on Mon, Sep 15 2014 5:42 PM</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Welcome to Hangman Game</h1>
+    <div class="hangman_image">
+        <img id="linch" src="img/0.png" alt="hangman">
+    </div> 
+
+    <div id= "letter_slots"> 
+      <p></p>
+    </div>
+
+    <div> 
+    <a href="" class="button"/>New Game</a>
+    </div>
+
+    <div id="alphabet"> 
+    <a href="#" onclick="check('A')" id="l_A" class="Letters">A</a>
+    <a href="#" onclick="check('B')" id="l_B" class="Letters">B</a>
+    <a href="#" onclick="check('C')" id="l_C" class="Letters">C</a>
+    <a href="#" onclick="check('D')" id="l_D" class="Letters">D</a>
+    <a href="#" onclick="check('E')" id="l_E" class="Letters">E</a>
+    <a href="#" onclick="check('F')" id="l_F" class="Letters">F</a>
+    <a href="#" onclick="check('G')" id="l_G" class="Letters">G</a>
+    <a href="#" onclick="check('H')" id="l_H" class="Letters">H</a>
+    <a href="#" onclick="check('I')" id="l_I" class="Letters">I</a>
+    <a href="#" onclick="check('J')" id="l_J" class="Letters">J</a>
+    <a href="#" onclick="check('K')" id="l_K" class="Letters">K</a>
+    <a href="#" onclick="check('L')" id="l_L" class="Letters">L</a>
+    <a href="#" onclick="check('M')" id="l_M" class="Letters">M</a>
+    <a href="#" onclick="check('N')" id="l_N" class="Letters">N</a>
+    <a href="#" onclick="check('O')" id="l_O" class="Letters">O</a>
+    <a href="#" onclick="check('P')" id="l_P" class="Letters">P</a>
+    <a href="#" onclick="check('Q')" id="l_Q" class="Letters">Q</a>
+    <a href="#" onclick="check('R')" id="l_R" class="Letters">R</a>
+    <a href="#" onclick="check('S')" id="l_S" class="Letters">S</a>
+    <a href="#" onclick="check('T')" id="l_T" class="Letters">T</a>
+    <a href="#" onclick="check('U')" id="l_U" class="Letters">U</a> 
+    <a href="#" onclick="check('V')" id="l_V" class="Letters">V</a> 
+    <a href="#" onclick="check('W')" id="l_W" class="Letters">W</a>
+    <a href="#" onclick="check('X')" id="l_X" class="Letters">X</a>
+    <a href="#" onclick="check('Y')" id="l_Y" class="Letters">Y</a>
+    <a href="#" onclick="check('Z')" id="l_Z" class="Letters">Z</a>
+    <div>
+    <p></p>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+    var words = ['','zombi','kraken','nexus','water','fire','ape','earth','flower','horse','onion'];
+    var rnd = Math.floor((Math.random() * 10) + 1);
+    var word = words[rnd];
+    var inp = "";
+    for (_i = 0, _len = word.length; _i < _len; _i++) {
+      i = word[_i];
+      inp += '<input type="text" class="'+i+' field"/>';
+    }
+    $('#letter_slots').html(inp);
+    var fails = 0;
+    var won = 0;
+    check = function (arg) {
+      var a = '.'+arg;
+      $('#l_'+arg).toggle()
+      if ($(a).length == 0) {
+        if (fails < 6) {
+        fails += 1;
+        img_path = "img/"+fails+".png";
+        $('#linch').attr('src',img_path);  
+        } else{
+          ans = confirm('GAME OVER!!!\nPLAY AGAIN...')
+          if (ans == true) {location.reload();};
+        };
+      } else{
+        won += $(a).length;
+        $(a).val(arg);
+        if (word.length == won) {
+          ans = confirm("YOU WON!!!\nPLAY AGAIN...")
+          if (ans == true) {location.reload();};
+        };
+      };
+    }
+    </script> 
+  </body>
+</html>
