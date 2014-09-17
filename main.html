@@ -46,6 +46,7 @@
     <a href="#" onclick="check('X')" id="l_X" class="Letters">X</a>
     <a href="#" onclick="check('Y')" id="l_Y" class="Letters">Y</a>
     <a href="#" onclick="check('Z')" id="l_Z" class="Letters">Z</a>
+    <a href="#" onclick="help()" class="Letters"></a>
 	</div>
 	</div>
     <div>
@@ -65,6 +66,9 @@
 
     var fails = 0;
     var won = 0;
+    help = function (argument) {
+      alert("This word have letter: "+word[Math.floor((Math.random() * word.length));]);
+    }
     check = function (arg) {
       var a = '.'+arg;
 	$('#l_'+arg).removeClass("Letters")
