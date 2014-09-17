@@ -5,7 +5,7 @@
     <title>Your Awesome Webpage created on Mon, Sep 15 2014 5:42 PM</title>
     <style>
          body{
-		background-image: url("http://www.freakygaming.com/gallery/game_wallpapers/two_worlds/hangman.jpg");
+		background-image: url("img/hangman.jpg");
 		background-repeat:no-repeat;
 		background-position: 30px 60px; 
         width:100%;
@@ -44,7 +44,14 @@
   </head>
   <body>
     <h1>Welcome to Hangman Game</h1> 
-	<a href="main.html" class="button" id = "play"/>Play</a>
+	<a href="main.html" class="button" id = "play" />Play</a>
 	<a href="about.html" class="button" id="about" />About</a>
   </body>
+  <script>
+  
+  function openMain() {
+	window.open("main.html");
+  }
+  
+  </script>
 </html>

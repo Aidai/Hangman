@@ -2,12 +2,13 @@
   <head>
   	<meta charset="utf-8">
     <title>Your Awesome Webpage created on Mon, Sep 15 2014 5:42 PM</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="include/style.css">
   </head>
   <body>
-    <h1>Welcome to Hangman Game</h1>
+	<div class="main">
+    <h1>Welcome to the Hangman Game</h1>
     <div class="hangman_image">
-        <img id="linch" src="img/0.png" alt="hangman">
+        <img id="linch" src="img/blank.gif" alt="hangman">
     </div> 
 
     <div id= "letter_slots"> 
@@ -15,7 +16,7 @@
     </div>
 
     <div> 
-    <a href="" class="button"/>New Game</a>
+    <a href="" class="button" onclick="location.reload();" />New Game</a>
     </div>
 
     <div id="alphabet"> 
@@ -45,11 +46,14 @@
     <a href="#" onclick="check('X')" id="l_X" class="Letters">X</a>
     <a href="#" onclick="check('Y')" id="l_Y" class="Letters">Y</a>
     <a href="#" onclick="check('Z')" id="l_Z" class="Letters">Z</a>
+	</div>
+	</div>
     <div>
+		</div>
     <p></p>
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="include/jquery-1.10.2.js"></script>
     <script>
-    var words = ['','zombi','kraken','nexus','water','fire','ape','earth','flower','horse','onion'];
+    var words = ['','zombie','kraken','nexus','water','fire','ape','earth','flower','horse','onion'];
     var rnd = Math.floor((Math.random() * 10) + 1);
     var word = words[rnd];
     var inp = "";
@@ -58,24 +62,30 @@
       inp += '<input type="text" class="'+i+' field"/>';
     }
     $('#letter_slots').html(inp);
+
     var fails = 0;
     var won = 0;
     check = function (arg) {
       var a = '.'+arg;
-      $('#l_'+arg).toggle()
+	$('#l_'+arg).removeClass("Letters")
+      $('#l_'+arg).addClass("guessedLetter")
       if ($(a).length == 0) {
-        if (fails < 6) {
-        fails += 1;
+        if (fails < 8) {
         img_path = "img/"+fails+".png";
-        $('#linch').attr('src',img_path);  
-        } else{
+		fails += 1;
+        $('#linch').attr('src',img_path);
+        if (fails >= 8) {
           ans = confirm('GAME OVER!!!\nPLAY AGAIN...')
           if (ans == true) {location.reload();};
         };
-      } else{
+		};
+      } else {
         won += $(a).length;
         $(a).val(arg);
-        if (word.length == won) {
+        if (fails >= 8) {
+          ans = confirm('GAME OVER!!!\nPLAY AGAIN...')
+          if (ans == true) {location.reload();};
+        } else if (word.length == won) {
           ans = confirm("YOU WON!!!\nPLAY AGAIN...")
           if (ans == true) {location.reload();};
         };
