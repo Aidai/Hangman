@@ -9,9 +9,7 @@
         text-align:center;
     
       }
-    body{
-        background-image: url("http://www.hp9845.net/9845/software/games/images/hangman.jpg");
-        background-repeat:no-repeat;
+    body {
         background-position: 30px 60px; 
         width:100%;
         height:100%;
@@ -20,11 +18,17 @@
         background-color:black;
         font-size: 17px;
       }
+    #picture{
+      position:relative; 
+      top:50px;
+    }
+    }
     }
     </style>
   </head>
   <body>
     <h1>About Hangman Game</h1>
+    <div id="picture"> <img src = "http://www.hp9845.net/9845/software/games/images/hangman.jpg"</div>
     <h2>Hangman is a computer based guessing game. Player is shown a set of blank letters and have to guess the word by suggesting letters.  If the player guesses a letter that is in the word, 
 then all instances of that letter are displayed at their corresponding positions in the word. 
 Otherwise, the guess is incorrect and every incorrect guess results in a body part being drawn on the gallows. The game ends when either all the letters in the word have been guessed or when the 
